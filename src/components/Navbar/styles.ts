@@ -23,7 +23,8 @@ export const Container = styled.div`
 `;
 
 export const NavContainer = styled.div`
-  width: 1180px;
+  max-width: 1180px;
+  width: 100%;
 
   display: flex;
   align-items: center;
@@ -64,6 +65,7 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   flex: 50%;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;

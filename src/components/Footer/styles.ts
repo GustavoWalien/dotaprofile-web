@@ -2,37 +2,51 @@ import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   width: 100%;
-
   background: #15181f;
   box-shadow: rgb(0 0 0 / 50%) 0px -2px 4px 0px;
   margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const FooterContainer = styled.div`
   margin: 20px;
-  width: 1180px;
+  max-width: 1180px;
+  width: 100%;
 
-  @media screen and (max-width: 1200px) {
-    width: 100%;
+  @media screen and (max-width: 1000px) {
   }
 `;
 
 export const FooterNav = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-left: 10px;
+`;
 
+export const LeftSide = styled.div`
+  flex: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+export const RightSide = styled.div`
+  flex: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 export const FooterLogo = styled.div`
   display: flex;
   align-items: center;
+
+  margin-left: 10px;
 `;
 
 export const FooterLogoText = styled.a`
@@ -44,10 +58,10 @@ export const FooterLogoText = styled.a`
 
 export const FooterMenu = styled.div`
   display: flex;
-  justify-content: space-around;
-  width: 30%;
+  align-items: center;
+  //margin-left: 10px;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1000px) {
     display: none;
   }
 `;
@@ -56,6 +70,7 @@ export const FooterLink = styled(Link)`
   color: #f0f0f5;
   font-size: 14px;
   font-weight: bold;
+  margin-left: 15px;
   text-decoration: none;
 
   &:hover {

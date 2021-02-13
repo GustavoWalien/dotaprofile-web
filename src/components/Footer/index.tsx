@@ -1,47 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import {
-  Container,
-  FooterContainer,
-  FooterNav,
-  FooterLogoText,
-  FooterLogo,
-  FooterMenu,
-  FooterLink,
-  FooterCopyrightText,
-} from './styles';
+import * as S from './styles';
 
 import logo from '../../assets/logo.svg';
 
-const Footer: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Footer: React.FC = () => (
+  <S.Container>
 
-  const handleToogle = () => {
-    console.log('teste');
-  };
-
-  return (
-    <Container>
-
-      <FooterContainer>
-        <FooterNav>
-          <FooterLogo>
+    <S.FooterContainer>
+      <S.FooterNav>
+        <S.LeftSide>
+          <S.FooterLogo>
             <img src={logo} alt="Dota Profile" />
-            <FooterLogoText>Dota Profile</FooterLogoText>
-          </FooterLogo>
-          <FooterMenu>
-            <FooterLink to="/players">PLAYERS</FooterLink>
-            <FooterLink to="/ranking">RANKING</FooterLink>
-            <FooterLink to="">TORNEIOS</FooterLink>
-          </FooterMenu>
-        </FooterNav>
-        <FooterCopyrightText>
-          Copyright 2021. Dota 2 is a registered trademark of Valve Corporation.
-        </FooterCopyrightText>
-      </FooterContainer>
+            <S.FooterLogoText>Dota Profile</S.FooterLogoText>
+          </S.FooterLogo>
+        </S.LeftSide>
+        <S.RightSide>
+          <S.FooterMenu>
+            <S.FooterLink to="/players">PLAYERS</S.FooterLink>
+            <S.FooterLink to="/ranking">RANKING</S.FooterLink>
+            <S.FooterLink to="">TORNEIOS</S.FooterLink>
+          </S.FooterMenu>
+        </S.RightSide>
+      </S.FooterNav>
 
-    </Container>
-  );
-};
+      <S.FooterCopyrightText>
+        <span>Copyright 2021. Dota 2 is a registered trademark of Valve Corporation.</span>
+      </S.FooterCopyrightText>
+
+    </S.FooterContainer>
+
+  </S.Container>
+);
 
 export default Footer;
