@@ -1,47 +1,36 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import {
-  Container,
-  Nav,
-  NavContainer,
-  NavLogo,
-  NavLogoText,
-  NavMenu,
-  NavLink,
-  Bars,
-} from './styles';
+import * as S from './styles';
 
 import logo from '../../assets/logo.svg';
 
 const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleToogle = () => {
-    console.log('teste');
-  };
+  const [showLinks, setShowLinks] = useState(false);
 
   return (
-    <Container>
+    <S.Container>
+      <S.NavContainer>
 
-      <Nav>
-        <NavContainer>
-          <NavLogo>
+        <S.LeftSide>
+          <S.NavLogo>
             <img src={logo} alt="Dota Profile" />
+            <S.NavLink to="/">
+              <S.NavLogoText>Dota Profile</S.NavLogoText>
+            </S.NavLink>
+          </S.NavLogo>
+          <S.NavMenu id={showLinks ? 'hidden' : ''}>
+            <S.NavLink onClick={() => { setShowLinks(!showLinks); }} to="/players">PLAYERS</S.NavLink>
+            <S.NavLink onClick={() => { setShowLinks(!showLinks); }} to="/ranking">RANKING</S.NavLink>
+            <S.NavLink onClick={() => { setShowLinks(!showLinks); }} to="">TORNEIOS</S.NavLink>
+          </S.NavMenu>
+        </S.LeftSide>
 
-            <NavLink to="/">
-              <NavLogoText>Dota Profile</NavLogoText>
-            </NavLink>
-          </NavLogo>
-          <Bars />
-          <NavMenu>
-            <NavLink to="/players">PLAYERS</NavLink>
-            <NavLink to="/ranking">RANKING</NavLink>
-            <NavLink to="">TORNEIOS</NavLink>
-          </NavMenu>
-        </NavContainer>
-      </Nav>
+        <S.RightSide>
+          <S.Bars onClick={() => setShowLinks(!showLinks)} />
+        </S.RightSide>
 
-    </Container>
+      </S.NavContainer>
+    </S.Container>
   );
 };
 

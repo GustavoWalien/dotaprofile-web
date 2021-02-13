@@ -7,9 +7,12 @@ export const Container = styled.div`
   align-items: center;
   min-height: 100vh;
 
-  @media screen and (max-width: 1170px) {
-    padding: 10px;
+  padding-top: 80px;
+
+  @media screen and (max-width: 1200px) {
+
   }
+
 `;
 
 export const PlayersContent = styled.div`
