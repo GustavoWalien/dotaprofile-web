@@ -1,16 +1,16 @@
 import React from 'react';
 
-import {
-  Container, Title,
-} from './styles';
+import * as S from './styles';
 
 const Dashboard: React.FC = () => {
   const test = '';
 
   return (
-    <Container>
-      <Title>Dota Profile</Title>
-    </Container>
+    <>
+      <S.Container>
+        <S.Title>Dota Profile</S.Title>
+      </S.Container>
+    </>
   );
 };
 

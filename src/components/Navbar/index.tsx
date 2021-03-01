@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
 import * as S from './styles';
 
 import logo from '../../assets/logo.svg';
@@ -7,8 +6,13 @@ import logo from '../../assets/logo.svg';
 const Navbar: React.FC = () => {
   const [showLinks, setShowLinks] = useState(false);
 
+  const handleShowLinks = () => {
+    setShowLinks(!showLinks);
+  };
+
   return (
     <S.Container>
+
       <S.NavContainer>
 
         <S.LeftSide>
@@ -18,18 +22,21 @@ const Navbar: React.FC = () => {
               <S.NavLogoText>Dota Profile</S.NavLogoText>
             </S.NavLink>
           </S.NavLogo>
-          <S.NavMenu id={showLinks ? 'hidden' : ''}>
-            <S.NavLink onClick={() => { setShowLinks(!showLinks); }} to="/players">PLAYERS</S.NavLink>
-            <S.NavLink onClick={() => { setShowLinks(!showLinks); }} to="/ranking">RANKING</S.NavLink>
-            <S.NavLink onClick={() => { setShowLinks(!showLinks); }} to="">TORNEIOS</S.NavLink>
+          <S.NavMenu className={showLinks ? 'open' : 'close'} id={showLinks ? 'hidden' : ''}>
+            <S.NavLink onClick={() => setShowLinks(false)} to="/players">PLAYERS</S.NavLink>
+            <S.NavLink onClick={() => setShowLinks(false)} to="/ranking">RANKING</S.NavLink>
+            <S.NavLink onClick={() => setShowLinks(false)} to="">TORNEIOS</S.NavLink>
           </S.NavMenu>
         </S.LeftSide>
 
         <S.RightSide>
-          <S.Bars onClick={() => setShowLinks(!showLinks)} />
+          <S.BtnHamburgerContainer className={showLinks ? 'open' : ''} onClick={handleShowLinks}>
+            <div className="menu-btn__burger" />
+          </S.BtnHamburgerContainer>
         </S.RightSide>
 
       </S.NavContainer>
+
     </S.Container>
   );
 };

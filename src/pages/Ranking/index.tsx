@@ -1,16 +1,14 @@
 import React from 'react';
 
-import {
-  Container, Title,
-} from './styles';
+import * as S from './styles';
 
 const Ranking: React.FC = () => {
   const test = '';
 
   return (
-    <Container>
-      <Title>Ranking sadasdasdasdadsasd</Title>
-    </Container>
+    <S.Container>
+      <S.Title>Ranking</S.Title>
+    </S.Container>
   );
 };
 

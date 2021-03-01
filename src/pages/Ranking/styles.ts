@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 1200px;
+  padding-top: 80px;
+  width: 100%;
+  max-width: 1180px;
   margin: 0 auto;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 123px);
 `;
 
 export const Title = styled.h1`

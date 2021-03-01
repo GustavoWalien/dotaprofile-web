@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-  max-width: 1170px;
-  margin: 0 auto;
-  align-items: center;
-  min-height: 100vh;
-
   padding-top: 80px;
+  width: 100%;
+  min-height: calc(100vh - 123px);
+  max-width: 1180px;
+  margin: 0 auto;
+
+  align-items: center;
+
 
   @media screen and (max-width: 1200px) {
 
@@ -16,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const PlayersContent = styled.div`
-  margin-top: 10px;
+  margin: 10px;
 `;
 
 export const Title = styled.h1`
@@ -55,9 +56,11 @@ export const CardPlayer = styled.div`
 export const CardAvatar = styled.div`
   height: 240px;
 
+
   img {
     height: 100%;
     width: 100%;
+    object-fit: cover;
     -webkit-mask-image: linear-gradient(to top, transparent 0%, rgb(22, 20, 33) 40%);
   }
 `;

@@ -14,8 +14,9 @@ export const Container = styled.div`
 
 export const FooterContainer = styled.div`
   margin: 20px;
-  max-width: 1180px;
   width: 100%;
+  max-width: 1180px;
+
 
   @media screen and (max-width: 1000px) {
   }

@@ -5,22 +5,18 @@ import apiDotaPlayer from '../../services/apiDotaPlayer';
 
 import personImg from '../../assets/person.png';
 
-import {
-  Container,
-  PlayersContent,
-  Title,
-  CardContent,
-  CardPlayer,
-  CardAvatar,
-  CardNickName,
-  CardNickNameText,
-  StyledPaginateContainer,
-} from './styles';
+import * as S from './styles';
+
+// export interface ICardPlayer {
+//   account_id?: string;
+//   name: string;
+//   avatarfull?: string;
+// }
 
 export interface ICardPlayer {
-  account_id?: string;
-  name: string;
-  avatarfull?: string;
+  id?: string;
+  nickname: string;
+  avatar_url?: string;
 }
 
 const PER_PAGE = 10;
@@ -32,8 +28,9 @@ const Players: React.FC = () => {
 
   useEffect(() => {
     const loadPlayers = async (): Promise<void> => {
-      const response = await apiDotaPlayer.get('');
-      setPlayers(response.data);
+      // const response = await apiDotaPlayer.get('');
+      const response = await api.get('/players');
+      setPlayers(response.data.sort());
       setLoading(false);
     };
 
@@ -48,35 +45,38 @@ const Players: React.FC = () => {
 
   const currentPageData = players
     .slice(offset, offset + PER_PAGE)
-    .map(({ account_id, name, avatarfull }) => (
-      <CardPlayer key={account_id}>
-        <CardAvatar>
-          <img src={avatarfull} alt={name} />
-        </CardAvatar>
-        <CardNickName>
-          <CardNickNameText>
-            {name}
-          </CardNickNameText>
-        </CardNickName>
-      </CardPlayer>
+    .sort((a:any, b:any) => a.id - b.id)
+    .map(({ id, nickname, avatar_url }) => (
+      <S.CardPlayer key={id}>
+        <S.CardAvatar>
+          { avatar_url === null
+            ? <img src={personImg} alt={nickname} />
+            : <img src={avatar_url} alt={nickname} />}
+        </S.CardAvatar>
+        <S.CardNickName>
+          <S.CardNickNameText>
+            {nickname}
+          </S.CardNickNameText>
+        </S.CardNickName>
+      </S.CardPlayer>
     ));
 
   const pageCount = Math.ceil(players.length / PER_PAGE);
 
   return (
     <>
-      <Container>
-        <PlayersContent>
-          <Title>Players</Title>
+      <S.Container>
+        <S.PlayersContent>
+          <S.Title>Players</S.Title>
 
-          <CardContent>
+          <S.CardContent>
             {currentPageData}
-          </CardContent>
+          </S.CardContent>
 
-        </PlayersContent>
+        </S.PlayersContent>
 
         { loading === false ? (
-          <StyledPaginateContainer>
+          <S.StyledPaginateContainer>
             <ReactPaginate
               previousLabel="←"
               nextLabel="→"
@@ -92,11 +92,11 @@ const Players: React.FC = () => {
               disabledClassName="pagination__link--disabled"
               activeClassName="pagination__link--active"
             />
-          </StyledPaginateContainer>
+          </S.StyledPaginateContainer>
         ) : (
-          <Title>Carregando...</Title>
+          <S.Title>Carregando...</S.Title>
         )}
-      </Container>
+      </S.Container>
     </>
   );
 };

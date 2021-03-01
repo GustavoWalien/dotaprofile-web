@@ -10,8 +10,8 @@ import GlobalStyle from './styles/global';
 const App: React.FC = () => (
   <>
     <BrowserRouter>
-      <Navbar />
       <Routes />
+      <Navbar />
       <Footer />
     </BrowserRouter>
     <GlobalStyle />
